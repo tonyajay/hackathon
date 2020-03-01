@@ -10,8 +10,8 @@ export default function CollegeProvider({ children }) {
   const [colleges, setColleges] = React.useState([]);
   const [featured, setFeatured] = React.useState([]);
   // extra state values
-  const [sorted, setSorted] = useState([]);
-  const [filters, setFilters] = useState({
+  const [sorted, setSorted] = React.useState([]);
+  const [filters, setFilters] = React.useState({
     search: "",
     courses: "all",
     financialAid: false,
@@ -20,7 +20,7 @@ export default function CollegeProvider({ children }) {
 
   React.useEffect(() => {
     setLoading(true);
-    Axios.get(`${url}/products`).then(response => {
+    Axios.get(`${url}/colleges`).then(response => {
       const featured = featuredColleges(flattenProducts(response.data));
       const colleges = flattenProducts(response.data);
       setSorted(colleges);
