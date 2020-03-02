@@ -2,12 +2,12 @@
 import Axios from "axios";
 import url from "../utils/URL";
 
-async function submitReview({ name, items, userToken }) {
+async function submitReview({ title, userToken }) {
   const response = await axios
     .post(
       `${url}/colleges`,
       {
-        name,
+        title,
         total,
         items
       },

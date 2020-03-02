@@ -13,12 +13,14 @@ import CollegeDetails from "./pages/CollegeDetails";
 import Header from "./components/Header";
 import Alert from "./components/Alert";
 import PrivateRoute from "./components/PrivateRoute";
+import ScrollButton from "./components/ScrollButton";
 
 export default function App() {
   return (
     <Router>
       <Header />
       <Alert />
+      <ScrollButton />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -39,6 +41,7 @@ export default function App() {
           <Colleges />
         </Route>
         <Route path="/colleges/:id" children={<CollegeDetails />}></Route>
+
         <Route path="*">
           <Error />
         </Route>

@@ -50,7 +50,7 @@ export default function Login() {
       showAlert({
         msg: `you are logged in ${username}`
       });
-      history.push("/products");
+      history.push("/colleges");
     } else {
       showAlert({
         msg: `there was an error. please try again`,

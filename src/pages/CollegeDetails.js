@@ -7,6 +7,7 @@ import { CartContext } from "../context/cart";
 export default function CollegeDetails() {
   const { id } = useParams();
   const history = useHistory();
+
   const { colleges } = React.useContext(CollegeContext);
   const { addToCart } = React.useContext(CartContext);
   const college = colleges.find(item => item.id === parseInt(id));

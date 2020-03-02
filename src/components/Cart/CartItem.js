@@ -2,14 +2,17 @@ import React from "react";
 import { CartContext } from "../../context/cart";
 import { Checkbox } from "@material-ui/core";
 
-export default function CartItem({ id, image, price, title }) {
+export default function CartItem({ id, image, fee, name }) {
   const { removeItem } = React.useContext(CartContext);
+
+  function compareCollege() {}
+
   return (
     <article className="cart-item">
-      <img src={image} alt={title} />
+      <img src={image} alt={name} />
       <div>
-        <h4>{title}</h4>
-        <h5>{price}</h5>
+        <h4>{name}</h4>
+        <h5>{fee}</h5>
         <button
           type="button"
           className="cart-btn remove-btn"
@@ -21,7 +24,7 @@ export default function CartItem({ id, image, price, title }) {
         </button>
       </div>
       <div>
-        <Checkbox />
+        <Checkbox onChange={e => compareCollege(e)} />
       </div>
     </article>
   );

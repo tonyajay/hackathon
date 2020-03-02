@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo1 from "../assets/logo.svg";
+import logo1 from "../assets/target1.PNG";
 import CartLink from "./Cart/CartLink";
 import { UserContext } from "../context/user";
 import LoginLink from "../components/LoginLink";
@@ -9,7 +9,7 @@ export default function Header() {
   const { user } = React.useContext(UserContext);
   return (
     <header className="header">
-      <img src={logo} alt="Vintage tech logo" className="logo" />
+      <img src={logo1} alt="Target Higher Ed" className="logo" />
       <nav>
         <ul>
           <div>

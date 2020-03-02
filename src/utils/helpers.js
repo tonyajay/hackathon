@@ -12,6 +12,19 @@ export function flattenColleges(data) {
 
 export function featuredColleges(data) {
   return data.filter(college => {
-    return college.rank > 6;
+    return college.rank < 9;
   });
+}
+
+export function paginate(colleges) {
+  const collegesPerPage = 8;
+  const numberOfPages = Math.ceil(colleges.length / collegesPerPage);
+  // const newColleges = Array.from({ length: numberOfPages }, (_, index) => {
+  //   return colleges.splice(0, collegesPerPage);
+  // });
+  const newColleges = Array.from({ length: numberOfPages }, (_, index) => {
+    const start = index * collegesPerPage;
+    return colleges.slice(start, start + collegesPerPage);
+  });
+  return newColleges;
 }
