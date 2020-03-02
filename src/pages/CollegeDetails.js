@@ -13,13 +13,13 @@ export default function CollegeDetails() {
   if (colleges.length === 0) {
     return <Loading />;
   } else {
-    const { image, title, price, description } = college;
+    const { image, name, fee, description } = college;
     return (
       <section className="single-product">
-        <img src={image} alt={title} className="single-product-image" />
+        <img src={image} alt={name} className="single-product-image" />
         <article>
-          <h1>{title}</h1>
-          <h2>{price}</h2>
+          <h1>{name}</h1>
+          <h2>{fee}</h2>
           <p>{description}</p>
           <button
             className="btn btn-primary btn-block"

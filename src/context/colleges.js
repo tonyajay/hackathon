@@ -1,7 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import url from "../utils/URL";
-import { featuredColleges, flattenProducts } from "../utils/helpers";
+import { featuredColleges, flattenColleges } from "../utils/helpers";
 
 export const CollegeContext = React.createContext();
 
@@ -21,8 +21,8 @@ export default function CollegeProvider({ children }) {
   React.useEffect(() => {
     setLoading(true);
     Axios.get(`${url}/colleges`).then(response => {
-      const featured = featuredColleges(flattenProducts(response.data));
-      const colleges = flattenProducts(response.data);
+      const featured = featuredColleges(flattenColleges(response.data));
+      const colleges = flattenColleges(response.data);
       setSorted(colleges);
       setColleges(colleges);
       setFeatured(featured);
