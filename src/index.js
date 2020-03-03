@@ -5,13 +5,16 @@ import App from "./App";
 import CollegeProvider from "./context/colleges";
 import { CartProvider } from "./context/cart";
 import { UserProvider } from "./context/user";
+import CourseProvider from "./context/courses";
 
 ReactDOM.render(
   <UserProvider>
     <CollegeProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
+      <CourseProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </CourseProvider>
     </CollegeProvider>
   </UserProvider>,
   document.getElementById("root")

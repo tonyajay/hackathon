@@ -3,7 +3,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 // pages
 import About from "./pages/About";
 import Cart from "./pages/Cart";
-import Compare from "./pages/Compare";
+import Review from "./pages/Review";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -31,8 +31,8 @@ export default function App() {
         <Route path="/cart">
           <Cart />
         </Route>
-        <PrivateRoute path="/compare">
-          <Compare />
+        <PrivateRoute path="/review">
+          <Review />
         </PrivateRoute>
         <Route path="/login">
           <Login />

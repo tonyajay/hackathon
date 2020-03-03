@@ -20,7 +20,7 @@ export default function CollegeProvider({ children }) {
   });
   const changePage = index => {
     setPage(index);
-  };
+  }; 
   const updateFilters = e => {
     const type = e.target.type;
     const filter = e.target.name;

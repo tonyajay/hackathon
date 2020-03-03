@@ -14,25 +14,48 @@ export default function CollegeDetails() {
   if (colleges.length === 0) {
     return <Loading />;
   } else {
-    const { image, name, fee, description } = college;
+    const {
+      image,
+      name,
+      fee,
+      description,
+      location,
+      courses,
+      reviews
+    } = college;
     return (
-      <section className="single-product">
-        <img src={image} alt={name} className="single-product-image" />
-        <article>
-          <h1>{name}</h1>
-          <h2>{fee}</h2>
-          <p>{description}</p>
-          <button
-            className="btn btn-primary btn-block"
-            onClick={() => {
-              addToCart(college);
-              history.push("/cart");
-            }}
-          >
-            add to cart
-          </button>
-        </article>
-      </section>
+      <>
+        <section className="single-product">
+          <img src={image} alt={name} className="single-product-image" />
+          <article>
+            <h1>{name}</h1>
+            <h2>Located in {location}</h2>
+            <br />
+            <h2>Courses Offered :</h2>
+            {courses.map(course => (
+              <div>{course.course_name}</div>
+            ))}
+            <br />
+            <p>{description}</p>
+            <h2>Tution Fees {`$${fee}`}</h2>
+            <br />
+            <button
+              className="btn btn-primary btn-block"
+              onClick={() => {
+                addToCart(college);
+                history.push("/cart");
+              }}
+            >
+              save university
+            </button>
+          </article>
+        </section>
+        <h2>Reviews :</h2>
+        <br />
+        {reviews.map(review => (
+          <h4>{review.comments}</h4>
+        ))}
+      </>
     );
   }
 }

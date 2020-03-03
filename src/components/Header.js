@@ -24,7 +24,7 @@ export default function Header() {
             </li>
             {user.token && (
               <li>
-                <Link to="/compare">compare</Link>
+                <Link to="/review">review</Link>
               </li>
             )}
           </div>

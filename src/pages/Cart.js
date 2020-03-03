@@ -23,8 +23,8 @@ export default function Cart() {
       </button>
       ;
       {user.token ? (
-        <Link to="/compare" className="btn btn-primary btn-block">
-          compare
+        <Link to="/review" className="btn btn-primary btn-block">
+          review
         </Link>
       ) : (
         <Link to="/login" className="btn btn-primary btn-block">

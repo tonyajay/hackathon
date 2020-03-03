@@ -22,12 +22,12 @@ function CartProvider({ children }) {
     setCart([...cart].filter(item => item.id !== id));
   };
   const addToCart = product => {
-    const { id, image, title, price } = product;
+    const { id, image, title, fee } = product;
     const item = [...cart].find(item => item.id === id);
     if (item) {
       alert("This college is already in the cart");
     } else {
-      const newItem = { id, image, title, price, amount: 1 };
+      const newItem = { id, image, title, fee, amount: 1 };
       const newCart = [...cart, newItem];
       setCart(newCart);
     }

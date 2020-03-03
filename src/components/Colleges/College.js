@@ -23,6 +23,6 @@ export default function College({ id, name, location, rank, fee, image }) {
 College.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  fee: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired
 };

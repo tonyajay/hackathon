@@ -10,7 +10,7 @@ export default function Filters() {
     <section className="filters-section">
       <h2 className="section-title">search colleges</h2>
       <form className="filters-form">
-        <div>
+        <div className="search1">
           {/* search input */}
           <div className="form-group">
             <label htmlFor="search">search university</label>
@@ -56,8 +56,8 @@ export default function Filters() {
         </div>
         {/* fee */}
         <div className="fee-group">
-          <p>fee</p>
-          <label>
+          <p>Fee</p>
+          <label className="radio1">
             <input
               type="radio"
               name="fee"
@@ -68,7 +68,7 @@ export default function Filters() {
             />
             all
           </label>
-          <label>
+          <label className="radio1">
             <input
               type="radio"
               name="fee"
@@ -76,27 +76,27 @@ export default function Filters() {
               checked={fee === 0}
               onChange={updateFilters}
             />
-            $0 - $300
+            $20,000 - $30,000
           </label>
-          <label>
+          <label className="radio1">
             <input
               type="radio"
               name="fee"
-              value="300"
-              checked={fee === 300}
+              value="30000"
+              checked={fee === 30000}
               onChange={updateFilters}
             />
-            $300 - $650
+            $30,000 - $40,000
           </label>
-          <label>
+          <label className="radio1">
             <input
               type="radio"
               name="fee"
-              value="650"
-              checked={fee === 650}
+              value="40000"
+              checked={fee === 40000}
               onChange={updateFilters}
             />
-            Over $650
+            Over $40,000
           </label>
         </div>
         {/* end of fee */}
