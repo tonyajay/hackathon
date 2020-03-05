@@ -11,7 +11,7 @@ export default function Review() {
   const { user, showAlert } = React.useContext(UserContext);
   const [college, setCollege] = React.useState("");
   const [course, setCourse] = React.useState("");
-  const [teaching_env, setTeaching_env] = React.useState("");
+  const [teaching_env, setTeaching] = React.useState("");
   const [quality, setQuality] = React.useState("");
   const [lab, setLab] = React.useState("");
   const [comments, setComments] = React.useState("");
@@ -21,24 +21,21 @@ export default function Review() {
     const theCollege = colleges.find(
       college => e.target.value === college.name
     );
-    console.log(theCollege);
     setCollege(theCollege);
   };
   const selectCourse = e => {
     const theCourse = courses.find(
       course => e.target.value === course.course_name
     );
-    console.log(theCourse);
     setCourse(theCourse);
   };
 
   const handleSubmit = async e => {
+    e.preventDefault();
     showAlert({
       msg: "submitting review. please wait..."
     });
-    e.preventDefault();
 
-    // const token = user.token;
     let response = await submitReview({
       user,
       college,
@@ -52,7 +49,7 @@ export default function Review() {
       showAlert({
         msg: `your review has been submitted ${user.username}.`
       });
-      history.push("/colleges");
+      history.push("/");
     } else {
       showAlert({
         msg: "there was an error. please try again...",
@@ -65,12 +62,11 @@ export default function Review() {
       <label htmlFor="college">College</label>
       <select
         name="college"
-        id="college"
         className="form-control"
-        value={college}
+        value={college.name}
         onChange={selectCollege}
       >
-        <option value=""></option>
+        <option>Select the college you wish to review</option>
         {colleges.map(college => {
           return (
             <option key={college.id} value={college.name}>
@@ -83,12 +79,11 @@ export default function Review() {
       <label htmlFor="course">course</label>
       <select
         name="course"
-        id="course"
         className="form-control"
-        value={course}
+        value={course.course_name}
         onChange={selectCourse}
       >
-        <option value=""></option>
+        <option>Select the course you wish to review</option>
         {courses.map(course => {
           return (
             <option key={course.id} value={course.course_name}>
@@ -103,7 +98,7 @@ export default function Review() {
         type="input"
         placeholder="Rate between 1 and 5"
         value={teaching_env}
-        onChange={event => setTeaching_env(parseInt(event.target.value))}
+        onChange={e => setTeaching(e.target.value)}
       ></input>
       <p></p>
       <label>Quality of Teaching : </label>
@@ -111,7 +106,7 @@ export default function Review() {
         type="input"
         placeholder="Rate between 1 and 5"
         value={quality}
-        onChange={event => setQuality(parseInt(event.target.value))}
+        onChange={e => setQuality(e.target.value)}
       ></input>
       <p></p>
       <label>Lab Facilities</label>
@@ -119,7 +114,7 @@ export default function Review() {
         type="input"
         placeholder="Rate between 1 and 5"
         value={lab}
-        onChange={event => setLab(parseInt(event.target.value))}
+        onChange={e => setLab(e.target.value)}
       ></input>
       <p></p>
       <label>Review : </label>
@@ -127,7 +122,7 @@ export default function Review() {
         type="input"
         placeholder="Write your heart out"
         value={comments}
-        onChange={event => setComments(event.target.value)}
+        onChange={e => setComments(e.target.value)}
       ></input>
       <p></p>
       <button type="submit">Submit Review</button>

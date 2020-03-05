@@ -1,4 +1,3 @@
-// submit review
 import axios from "axios";
 import url from "../utils/URL";
 
@@ -12,44 +11,43 @@ async function submitReview({
   comments
 }) {
   const totalavg = (teaching_env + quality + lab) / 3;
-  console.log(user, college, course, teaching_env, quality, lab, comments);
-  const data = {
+  console.log(
+    user,
     college,
     course,
     teaching_env,
     quality,
-    lab: lab,
+    lab,
+    comments,
+    totalavg
+  );
+  const data = {
+    college,
+    course,
+    teaching_env: parseInt(teaching_env),
+    quality: parseInt(quality),
+    lab: parseInt(lab),
     comments,
     totalavg
   };
-  const response = await axios({
-    method: "POST",
-    url: `${url}/reviews`,
-    data
-  })
-    /* ,
-    {
+  const response = await axios
+    .post(`${url}/reviews`, data, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${user.token}`
       }
-    } */
+    })
     .catch(error => console.log(error));
 
-  // const sum = key => reduce((a, b) => a + (b[key] || 0), 0);
-  // const newlist = { ...[college.reviews] };
-
-  // const reviewTotal = newlist.sum("totalavg");
-  let avg = 0;
-  const reviewTotal = college.reviews.forEach(
-    review => (avg += review.totalavg)
+  const reviewTotal = college.reviews.reduce(
+    (prev, curr) => prev + curr.totalavg,
+    0
   );
-  console.log(avg);
-  const id = college.id;
-  const collegeAvg = avg / college.reviews.length;
+  console.log(reviewTotal);
+  const collegeAvg = reviewTotal / college.reviews.length;
   console.log(collegeAvg);
   await axios
     .put(
-      `${url}/colleges/${id}`,
+      `${url}/colleges/${college.id}`,
       {
         totalavg: collegeAvg
       },
