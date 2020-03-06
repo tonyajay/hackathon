@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import img from "../../assets/mainBcg.jpeg";
 
 export default function College({ id, name, location, rank, fee, image }) {
-  console.log(image);
   return (
     <article className="product">
       <div className="img-container">
@@ -22,7 +21,5 @@ export default function College({ id, name, location, rank, fee, image }) {
 }
 College.propTypes = {
   image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  fee: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired
 };

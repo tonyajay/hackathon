@@ -5,8 +5,7 @@ import PageColleges from "../components/Colleges/PageColleges";
 import Filters from "../components/Colleges/Filters";
 
 export default function College() {
-  const { loading, colleges } = useContext(CollegeContext);
-  console.log(colleges);
+  const { loading } = useContext(CollegeContext);
   if (loading) {
     return <Loading />;
   }

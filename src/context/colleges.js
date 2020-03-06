@@ -20,7 +20,7 @@ export default function CollegeProvider({ children }) {
   });
   const changePage = index => {
     setPage(index);
-  }; 
+  };
   const updateFilters = e => {
     const type = e.target.type;
     const filter = e.target.name;
@@ -51,14 +51,17 @@ export default function CollegeProvider({ children }) {
 
   React.useLayoutEffect(() => {
     let newColleges = [...colleges].sort((a, b) => a.fee - b.fee);
-    const { search, course, shipping, fee } = filters;
-    //
+    const { search, course, financialAid, fee } = filters;
+    console.log(course, financialAid);
+
     if (course !== "all") {
-      newColleges = newColleges.filter(college => college.course === course);
-    }
-    if (shipping !== false) {
       newColleges = newColleges.filter(
-        college => college.free_shipping === shipping
+        college => college.courses.course_name === course
+      );
+    }
+    if (financialAid !== false) {
+      newColleges = newColleges.filter(
+        college => college.financialAid === financialAid
       );
     }
     if (fee !== "all") {

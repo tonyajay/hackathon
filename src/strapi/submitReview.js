@@ -10,7 +10,8 @@ async function submitReview({
   lab,
   comments
 }) {
-  const totalavg = (teaching_env + quality + lab) / 3;
+  const totalavg =
+    (parseInt(teaching_env) + parseInt(quality) + parseInt(lab)) / 3;
   console.log(
     user,
     college,
@@ -38,10 +39,11 @@ async function submitReview({
     })
     .catch(error => console.log(error));
 
-  const reviewTotal = college.reviews.reduce(
-    (prev, curr) => prev + curr.totalavg,
-    0
-  );
+  let reviewTotal = 0;
+  for (let i = 0; i < college.reviews.length; i++) {
+    reviewTotal += college.reviews[i].totalavg;
+  }
+
   console.log(reviewTotal);
   const collegeAvg = reviewTotal / college.reviews.length;
   console.log(collegeAvg);

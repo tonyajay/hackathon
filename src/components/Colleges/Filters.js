@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { CollegeContext } from "../../context/colleges";
+import { CourseContext } from "../../context/courses";
 export default function Filters() {
   const {
     filters: { search, course, financialaid, fee },
     updateFilters,
     sorted
   } = useContext(CollegeContext);
+  const { courses } = useContext(CourseContext);
   return (
     <section className="filters-section">
       <h2 className="section-title">search colleges</h2>
@@ -35,9 +37,11 @@ export default function Filters() {
               onChange={updateFilters}
             >
               <option value="all">all</option>
-              <option value="accounting">accounting</option>
-              <option value="aerospace engieering">aerospace engieering</option>
-              <option value="biology">biology</option>
+              {courses.map(course => (
+                <option key={course.id} value={course.course_name}>
+                  {course.course_name}
+                </option>
+              ))}
             </select>
           </div>
           {/* end of course */}
@@ -50,10 +54,10 @@ export default function Filters() {
               checked={financialaid}
               onChange={updateFilters}
             />
-            <label htmlFor="financialaid">free financialaid</label>
+            <label htmlFor="financialaid">free financial aid</label>
           </div>
-          {/* end of free financialaid */}
         </div>
+        {/* end of free financialaid */}
         {/* fee */}
         <div className="fee-group">
           <p>Fee</p>
