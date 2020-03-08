@@ -3,7 +3,7 @@ import { CollegeContext } from "../../context/colleges";
 import { CourseContext } from "../../context/courses";
 export default function Filters() {
   const {
-    filters: { search, course, financialaid, fee },
+    filters: { search, course, financialAid, fee },
     updateFilters,
     sorted
   } = useContext(CollegeContext);
@@ -49,19 +49,19 @@ export default function Filters() {
           <div className="form-group">
             <input
               type="checkbox"
-              name="financialaid"
-              id="financialaid"
-              checked={financialaid}
+              name="financialAid"
+              id="financialAid"
+              checked={financialAid}
               onChange={updateFilters}
             />
-            <label htmlFor="financialaid">free financial aid</label>
+            <label htmlFor="financialaid">financial aid</label>
           </div>
         </div>
         {/* end of free financialaid */}
         {/* fee */}
-        <div className="fee-group">
-          <p>Fee</p>
-          <label className="radio1">
+        <div className="price-group">
+          <p>Tution Fees</p>
+          <label className="radio">
             <input
               type="radio"
               name="fee"
@@ -72,7 +72,8 @@ export default function Filters() {
             />
             all
           </label>
-          <label className="radio1">
+
+          <label className="radio">
             <input
               type="radio"
               name="fee"
@@ -80,9 +81,10 @@ export default function Filters() {
               checked={fee === 0}
               onChange={updateFilters}
             />
-            $20,000 - $30,000
+            Under $30,000
           </label>
-          <label className="radio1">
+
+          <label className="radio">
             <input
               type="radio"
               name="fee"
@@ -92,7 +94,8 @@ export default function Filters() {
             />
             $30,000 - $40,000
           </label>
-          <label className="radio1">
+
+          <label className="radio">
             <input
               type="radio"
               name="fee"
@@ -100,7 +103,18 @@ export default function Filters() {
               checked={fee === 40000}
               onChange={updateFilters}
             />
-            Over $40,000
+            $40,000-$50000
+          </label>
+
+          <label className="radio">
+            <input
+              type="radio"
+              name="fee"
+              value="50000"
+              checked={fee === 50000}
+              onChange={updateFilters}
+            />
+            Over $50000
           </label>
         </div>
         {/* end of fee */}

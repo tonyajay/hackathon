@@ -14,10 +14,24 @@ export default function CollegeProvider({ children }) {
   const [sorted, setSorted] = React.useState([]);
   const [filters, setFilters] = React.useState({
     search: "",
-    courses: "all",
+    course: "all",
     financialAid: false,
     fee: "all"
   });
+
+  React.useEffect(() => {
+    setLoading(true);
+    Axios.get(`${url}/colleges`).then(response => {
+      const featured = featuredColleges(flattenColleges(response.data));
+      const colleges = flattenColleges(response.data);
+      setSorted(paginate(colleges));
+      setColleges(colleges);
+      setFeatured(featured);
+      setLoading(false);
+    });
+    return () => {};
+  }, []);
+
   const changePage = index => {
     setPage(index);
   };
@@ -36,42 +50,31 @@ export default function CollegeProvider({ children }) {
     setFilters({ ...filters, [filter]: filterValue });
   };
 
-  React.useEffect(() => {
-    setLoading(true);
-    Axios.get(`${url}/colleges`).then(response => {
-      const featured = featuredColleges(flattenColleges(response.data));
-      const colleges = flattenColleges(response.data);
-      setSorted(paginate(colleges));
-      setColleges(colleges);
-      setFeatured(featured);
-      setLoading(false);
-    });
-    return () => {};
-  }, []);
-
   React.useLayoutEffect(() => {
     let newColleges = [...colleges].sort((a, b) => a.fee - b.fee);
     const { search, course, financialAid, fee } = filters;
-    console.log(course, financialAid);
-
     if (course !== "all") {
-      newColleges = newColleges.filter(
-        college => college.courses.course_name === course
-      );
+      newColleges = newColleges.filter(college => {
+        if (college.courses.find(Course => Course.course_name === course)) {
+          return college;
+        }
+      });
     }
     if (financialAid !== false) {
       newColleges = newColleges.filter(
-        college => college.financialAid === financialAid
+        college => college.financialaid === financialAid
       );
     }
     if (fee !== "all") {
       newColleges = newColleges.filter(college => {
         if (fee === 0) {
-          return college.fee < 300;
-        } else if (fee === 300) {
-          return college.fee > 300 && college.fee < 650;
+          return college.fee < 30000;
+        } else if (fee === 30000) {
+          return college.fee > 30000 && college.fee < 40000;
+        } else if (fee === 40000) {
+          return college.fee > 40000 && college.fee < 50000;
         } else {
-          return college.fee > 650;
+          return college.fee > 50000;
         }
       });
     }
@@ -81,9 +84,7 @@ export default function CollegeProvider({ children }) {
         return name.startsWith(search) ? college : null;
       });
     }
-
     setPage(0);
-
     setSorted(paginate(newColleges));
   }, [filters, colleges]);
 
