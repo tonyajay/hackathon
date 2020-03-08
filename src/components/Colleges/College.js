@@ -1,20 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import img from "../../assets/mainBcg.jpeg";
+// import { updatetotalavg } from "../../utils/helpers";
+import { UserContext } from "../../context/user";
 
 export default function College({ id, name, location, rank, fee, image }) {
+  // props
+  // const { user } = React.useContext(UserContext);
   return (
     <article className="product">
       <div className="img-container">
-        <img src={image || img} alt={name || "default title"} />
-        <Link to={`colleges/${id}`} className="btn btn-primary product-link">
+        <img src={image} alt={name} />
+        <Link
+          to={`colleges/${id}`}
+          className="btn btn-primary product-link"
+          // onClick={() => updatetotalavg(props.colleges, user)}
+        >
           details
         </Link>
       </div>
       <div className="product-footer">
         <p className="product-title">{name || "default title"}</p>
-        <p className="product-price">{`$${fee}` || 0}</p>
+        <p className="product-price">{`${location}`}</p>
       </div>
     </article>
   );

@@ -50,6 +50,7 @@ export default function Review() {
         msg: `your review has been submitted ${user.username}.`
       });
       history.push("/");
+      window.location.reload(true);
     } else {
       showAlert({
         msg: "there was an error. please try again...",

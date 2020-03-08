@@ -1,4 +1,6 @@
 import url from "./URL";
+import axios from "axios";
+import React from "react";
 // helper functions
 
 //flatten
@@ -27,4 +29,27 @@ export function paginate(colleges) {
     return colleges.slice(start, start + collegesPerPage);
   });
   return newColleges;
+}
+
+export async function updatetotalavg(college, user) {
+  const reviewTotal = college.reviews.reduce(function(acc, obj) {
+    return acc + obj.totalavg;
+  }, 0);
+
+  console.log(reviewTotal);
+  const collegeAvg = reviewTotal / college.reviews.length;
+  console.log(collegeAvg);
+  await axios
+    .put(
+      `${url}/colleges/${college.id}`,
+      {
+        totalavg: collegeAvg
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        }
+      }
+    )
+    .catch(error => console.log(error));
 }

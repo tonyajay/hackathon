@@ -38,14 +38,11 @@ async function submitReview({
       }
     })
     .catch(error => console.log(error));
-
-  let reviewTotal = 0;
-  for (let i = 0; i < college.reviews.length; i++) {
-    reviewTotal += college.reviews[i].totalavg;
-  }
-
+  const reviewTotal =
+    college.reviews.reduce((acc, obj) => acc + obj.totalavg, 0) + totalavg;
   console.log(reviewTotal);
-  const collegeAvg = reviewTotal / college.reviews.length;
+  console.log(college.reviews);
+  const collegeAvg = reviewTotal / (college.reviews.length + 1);
   console.log(collegeAvg);
   await axios
     .put(
