@@ -70,11 +70,11 @@ export default function CollegeProvider({ children }) {
         if (fee === 0) {
           return college.fee < 30000;
         } else if (fee === 30000) {
-          return college.fee > 30000 && college.fee < 40000;
+          return college.fee >= 30000 && college.fee < 40000;
         } else if (fee === 40000) {
-          return college.fee > 40000 && college.fee < 50000;
+          return college.fee >= 40000 && college.fee < 50000;
         } else {
-          return college.fee > 50000;
+          return college.fee >= 50000;
         }
       });
     }
