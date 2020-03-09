@@ -13,9 +13,13 @@ export function flattenColleges(data) {
 }
 
 export function featuredColleges(data) {
-  return data.filter(college => {
-    return college.rank < 9;
-  });
+  return [...data]
+    .sort((a, b) => b.totalavg - a.totalavg)
+    .filter((college, i) => {
+      if (i < 8) {
+        return college;
+      } else return null;
+    });
 }
 
 export function paginate(colleges) {
