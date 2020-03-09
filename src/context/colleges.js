@@ -51,7 +51,7 @@ export default function CollegeProvider({ children }) {
   };
 
   React.useLayoutEffect(() => {
-    let newColleges = [...colleges].sort((a, b) => a.fee - b.fee);
+    let newColleges = [...colleges].sort((a, b) => b.totalavg - a.totalavg);
     const { search, course, financialAid, fee } = filters;
     if (course !== "all") {
       newColleges = newColleges.filter(college => {

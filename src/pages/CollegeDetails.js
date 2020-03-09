@@ -21,7 +21,8 @@ export default function CollegeDetails() {
       description,
       location,
       courses,
-      reviews
+      reviews,
+      totalavg
     } = college;
     return (
       <>
@@ -29,6 +30,7 @@ export default function CollegeDetails() {
           <img src={image} alt={name} className="single-product-image" />
           <article>
             <h1>{name}</h1>
+            <h3>Current Score : {totalavg}/500</h3>
             <h2>Located in {location}</h2>
             <br />
             <h2>Courses Offered :</h2>

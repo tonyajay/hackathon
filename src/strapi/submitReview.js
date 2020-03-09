@@ -48,7 +48,7 @@ async function submitReview({
     .put(
       `${url}/colleges/${college.id}`,
       {
-        totalavg: collegeAvg
+        totalavg: collegeAvg * 100
       },
       {
         headers: {

@@ -51,6 +51,7 @@ export default function Login() {
         msg: `you are logged in ${username}`
       });
       history.push("/colleges");
+      console.log(newUser);
     } else {
       showAlert({
         msg: `there was an error. please try again`,

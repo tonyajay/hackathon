@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export default function College({ id, name, location, rank, fee, image }) {
+export default function College({ id, name, location, image, index }) {
   return (
     <article className="product">
+      <br />
+      <p className="product-footer product-title">Current Rank :{index + 1}</p>
       <div className="img-container">
         <img src={image} alt={name} />
         <Link to={`colleges/${id}`} className="btn btn-primary product-link">

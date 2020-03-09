@@ -76,24 +76,28 @@ export default function Review() {
           );
         })}
       </select>
-      <p></p>
-      <label htmlFor="course">course</label>
-      <select
-        name="course"
-        className="form-control"
-        value={course.course_name}
-        onChange={selectCourse}
-      >
-        <option>Select the course you wish to review</option>
-        {courses.map(course => {
-          return (
-            <option key={course.id} value={course.course_name}>
-              {course.course_name}
-            </option>
-          );
-        })}
-      </select>
-      <p></p>
+      {college.name !== undefined && (
+        <>
+          <p></p>
+          <label htmlFor="course">course</label>
+          <select
+            name="course"
+            className="form-control"
+            value={course.course_name}
+            onChange={selectCourse}
+          >
+            <option>Select the course you wish to review</option>
+            {college.courses.map(course => {
+              return (
+                <option key={course.id} value={course.course_name}>
+                  {course.course_name}
+                </option>
+              );
+            })}
+          </select>
+          <p></p>
+        </>
+      )}
       <label>Learning Environment : </label>
       <input
         type="input"
