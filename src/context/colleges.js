@@ -58,6 +58,7 @@ export default function CollegeProvider({ children }) {
         if (college.courses.find(Course => Course.course_name === course)) {
           return college;
         }
+        return null;
       });
     }
     if (financialAid !== false) {

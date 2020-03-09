@@ -1,6 +1,3 @@
-import url from "./URL";
-import axios from "axios";
-import React from "react";
 // helper functions
 
 //flatten
@@ -8,7 +5,6 @@ export function flattenColleges(data) {
   return data.map(college => {
     let image = (college.thumbnail && college.thumbnail.url) || null;
     return { ...college, image };
-    //let image = `${url}${item.image.url}`
   });
 }
 
