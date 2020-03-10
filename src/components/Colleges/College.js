@@ -19,9 +19,7 @@ export default function College({
           Current Rank :{index + 1}
         </p>
       ) : (
-        <p className="product-footer product-title">
-          Current Score :{totalavg}/500
-        </p>
+        <p className="product-footer product-title">Score :{totalavg}/500</p>
       )}
       <div className="img-container">
         <img src={image} alt={name} />
