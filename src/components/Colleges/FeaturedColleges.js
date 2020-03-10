@@ -8,5 +8,11 @@ export default function FeaturedColleges() {
   if (loading) {
     return <Loading />;
   }
-  return <CollegeList title="Featured Colleges" colleges={featured} />;
+  return (
+    <CollegeList
+      title="Featured Colleges"
+      colleges={featured}
+      featured={true}
+    />
+  );
 }
