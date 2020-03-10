@@ -20,7 +20,7 @@ export default function College({
         </p>
       ) : (
         <p className="product-footer product-title">
-          Current Score :{totalavg}
+          Current Score :{totalavg}/500
         </p>
       )}
       <div className="img-container">
